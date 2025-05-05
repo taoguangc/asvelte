@@ -1,0 +1,16 @@
+---
+import { Image as AstroImage } from 'astro:assets'
+import profile from '@assets/profile.avif';
+---
+<Image
+  src={profile}
+  alt="Profile Image"
+  width={360}
+  height={480}
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+  loading="eager"
+  decoding="async"
+  fetchpriority="high"
+  class="aspect-[3/4] object-cover"
+/>

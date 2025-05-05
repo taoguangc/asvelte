@@ -1,0 +1,111 @@
+@import 'tailwindcss';
+@plugin '@tailwindcss/typography';
+@config "../../tailwind.config.ts";
+
+@theme {
+  --color-gray: #f7f7f7;
+  --animate-slideUp: slideUp 0.5s ease-out;
+  --animate-slideDown: slideDown 0.5s ease-out;
+  @keyframes slideUp {
+    0% {
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+  @keyframes slideDown {
+    0% {
+      transform: translateY(-100%);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+  --animate-marquee: marquee 20s linear infinite;
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+}
+
+@layer utilities {
+  .prose {
+    @apply max-w-7xl;
+  }
+  .prose a {
+    @apply text-primary underline decoration-1 underline-offset-2 hover:no-underline;
+  }
+  .prose blockquote {
+    @apply relative border-none pl-0 text-center text-[1.375em] leading-snug font-semibold not-italic sm:text-[1.66667em] lg:-mx-24 xl:-mx-40;
+  }
+  .prose blockquote:before {
+    @apply bg-primary mx-auto block h-0.75 w-15;
+    content: '';
+    margin-bottom: 1.375em;
+  }
+  .prose blockquote:after {
+    @apply bg-primary mx-auto block h-0.75 w-7.5;
+    content: '';
+    margin-top: 1.375em;
+  }
+}
+
+/* Container option behave strangely */
+html {
+  position: relative;
+  scroll-behavior: smooth;
+}
+
+a {
+  text-decoration: none;
+}
+
+h1,
+h2 {
+  @apply tracking-tight;
+}
+h3,
+h4,
+h5,
+h6 {
+  @apply tracking-normal;
+}
+
+article p {
+  @apply mb-4 text-gray-600;
+}
+
+.dot-list {
+  list-style: none;
+  position: relative;
+}
+
+.dot-list::before {
+  content: '';
+  @apply absolute top-3 bottom-1 left-1 z-0 w-0.5 bg-gray-100 md:left-5;
+}
+
+.dot-list li {
+  position: relative;
+}
+.dot-list li::before {
+  content: '';
+  @apply absolute top-2 -left-6 z-[1] h-[11px] w-[11px] rounded-full border border-[#e7e7e7] bg-[#8f8f8f] shadow-[inset_0_0_0_1.5px_white] md:-left-8;
+}
+/* Loading */
+/* body {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+body.loaded {
+  opacity: 1;
+}
+
+body:not(.loaded) main {
+  visibility: hidden;
+} */
